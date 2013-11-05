@@ -1,0 +1,37 @@
+!!!
+%html
+%head
+  %title TheComments Dummy App
+  = stylesheet_link_tag    :application, media: :all
+  = javascript_include_tag :application
+  = csrf_meta_tags
+
+%body
+  .body
+    %h1
+      follow this link &rarr;
+      = link_to "Comments Manage (+#{current_user.draft_comcoms_count})", comments.manage_comments_path
+
+
+    %pre{ style: "font-size: 18px;" }= raw render partial: './note'
+
+    %br
+    %br
+
+    %hr
+
+    %br
+    %br
+    %br
+    %br
+
+    %p
+      = link_to 'Home', root_path
+      \|
+      - if current_user
+        User: #{current_user.username}
+        \|
+        = link_to "Comments Manage (+#{current_user.draft_comcoms_count})", comments.manage_comments_path
+      - else
+        Guest
+    = yield

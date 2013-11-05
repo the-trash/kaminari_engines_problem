@@ -1,0 +1,11 @@
+>>> Doesn't work!
+
+app/views/the_comments/haml/manage.html.haml
+= paginate @comments
+
+>>> WORK!
+
+Monkey patch: config/initializers/kaminari_route_proxy.rb
+
+app/views/the_comments/haml/manage.html.haml
+= paginate @comments, routes_proxy: comments
